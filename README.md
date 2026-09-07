@@ -1,5 +1,10 @@
 # Coffee Atlas
 
+[![Next.js](https://img.shields.io/badge/Next.js-14-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Supabase](https://img.shields.io/badge/Supabase-Postgres%20%2B%20RLS-3FCF8E?logo=supabase&logoColor=white)](https://supabase.com)
+[![Status](https://img.shields.io/badge/status-early%20WIP-orange)](./handoff.md)
+
 An estate-first atlas of specialty coffee. Browse a near-complete database of coffee
 estates and origins, track which you've tasted, and get a brewer recommendation for
 each based on its processing method and roast.
