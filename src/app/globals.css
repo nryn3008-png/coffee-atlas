@@ -1,0 +1,16 @@
+:root {
+  --pine-deep: #142019;
+  --parchment: #e9e2cd;
+  --ink: #2b2620;
+  --ink-soft: #5c5648;
+  --umber: #8a4426;
+  --olive: #6f7b4e;
+  --line: rgba(43, 38, 32, 0.15);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, sans-serif;
+}

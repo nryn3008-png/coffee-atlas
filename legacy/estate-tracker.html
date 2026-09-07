@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Estate Log — Indian Coffee Tracker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine: #1f3226;
+    --pine-deep: #142019;
+    --parchment: #e9e2cd;
+    --parchment-light: #f2ecdc;
+    --umber: #8a4426;
+    --umber-deep: #6b3319;
+    --olive: #6f7b4e;
+    --ink: #2b2620;
+    --ink-soft: #5c5648;
+    --line: rgba(43,38,32,0.15);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: var(--parchment);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(111,123,78,0.10), transparent 40%),
+      radial-gradient(circle at 90% 90%, rgba(138,68,38,0.08), transparent 45%);
+    font-family:'IBM Plex Sans', sans-serif;
+    color: var(--ink);
+    min-height:100vh;
+  }
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  header{
+    margin-bottom: 32px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.05;
+    margin: 0 0 10px;
+    color: var(--pine-deep);
+  }
+  .sub{
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 480px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .progress-card{
+    margin-top: 26px;
+    background: var(--parchment-light);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px 20px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .progress-number{
+    font-family:'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--umber-deep);
+    white-space: nowrap;
+  }
+  .progress-number span{
+    font-size: 16px;
+    color: var(--ink-soft);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+  }
+  .bar-track{
+    flex: 1;
+    height: 6px;
+    background: rgba(43,38,32,0.12);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill{
+    height: 100%;
+    background: var(--olive);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+
+  .filter-row{
+    display:flex;
+    gap: 8px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+  .filter-btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .filter-btn.active{
+    background: var(--pine);
+    color: var(--parchment-light);
+    border-color: var(--pine);
+  }
+
+  .region{
+    margin-top: 34px;
+  }
+  .region-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .region-head:hover .region-name{ color: var(--umber-deep); }
+  .region-name{
+    font-family:'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--pine-deep);
+    transition: color 0.15s ease;
+  }
+  .region-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .region-body{
+    overflow: hidden;
+    max-height: 3000px;
+    transition: max-height 0.3s ease;
+  }
+  .region-body.collapsed{
+    max-height: 0;
+  }
+
+  .estate-row{
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(43,38,32,0.08);
+  }
+  .estate-row:last-child{ border-bottom: none; }
+
+  .check{
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    border-radius: 3px;
+    border: 1.5px solid var(--ink-soft);
+    background: transparent;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 0;
+  }
+  .check.tried{
+    background: var(--umber);
+    border-color: var(--umber);
+  }
+  .check svg{ width: 12px; height: 12px; display:none; }
+  .check.tried svg{ display:block; }
+
+  .estate-main{ flex: 1; min-width: 0; }
+  .estate-top{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .estate-name{
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .estate-row.tried .estate-name{ color: var(--umber-deep); }
+  .estate-sub{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 1px;
+  }
+  .estate-process{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--umber);
+    margin-top: 3px;
+    letter-spacing: 0.01em;
+  }
+  .estate-process b{
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .expand-arrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+  }
+
+  .estate-notes{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+  .estate-notes.open{
+    max-height: 340px;
+    margin-top: 10px;
+  }
+  .process-select{
+    width: 100%;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--parchment-light);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  .process-select:focus{ outline: none; border-color: var(--olive); }
+  .brewer-rec{
+    background: rgba(111,123,78,0.10);
+    border-left: 2px solid var(--olive);
+    border-radius: 0 3px 3px 0;
+    padding: 8px 11px;
+    margin-bottom: 9px;
+  }
+  .brewer-rec .rec-brewer{
+    font-family:'Fraunces', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pine-deep);
+  }
+  .brewer-rec .rec-params{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--umber-deep);
+    margin: 2px 0 4px;
+  }
+  .brewer-rec .rec-why{
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .estate-notes textarea{
+    width: 100%;
+    min-height: 56px;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--parchment-light);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 8px 10px;
+    resize: vertical;
+  }
+  .estate-notes textarea:focus{
+    outline: none;
+    border-color: var(--olive);
+  }
+  .roaster-input{
+    width: 100%;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--umber-deep);
+    background: var(--parchment-light);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+  }
+  .roaster-input:focus{
+    outline: none;
+    border-color: var(--olive);
+  }
+  .roaster-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--olive);
+    margin-top: 2px;
+  }
+  .roaster-tag span{
+    margin-right: 6px;
+  }
+
+  footer{
+    margin-top: 46px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .save-state{
+    color: var(--olive);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">FIELD LOG · WESTERN GHATS &amp; BEYOND</div>
+    <h1>Indian Estate Tracker</h1>
+    <p class="sub">A near-complete census of India's specialty coffee estates across 14 growing regions, plus international origins. Tap any estate to set its process and get a brewer recommendation, log the roaster, and jot tasting notes. Send me a coffee link and I'll trace it, check it off, and set its brewer.</p>
+    <div class="progress-card">
+      <div class="progress-number" id="progressNum">0<span> / 39 tried</span></div>
+      <div class="bar-track"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
+    </div>
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="tried">Tried</button>
+      <button class="filter-btn" data-filter="untried">Not yet</button>
+    </div>
+  </header>
+
+  <div id="regions"></div>
+
+  <footer>
+    <span id="saveIndicator">Saved locally to your device.</span>
+  </footer>
+</div>
+
+<script>
+const DATA = [
+  { region: "Chikmagalur, Karnataka", note: "Where Indian coffee began — chocolatey, classic arabica", estates: [
+    { id: "baarbara", name: "Baarbara Estate", sub: "Bababudangiri · since 1896, shade-grown Sel. 795" },
+    { id: "kerehaklu", name: "Kerehaklu", sub: "" },
+    { id: "amyra", name: "Amyra Farms", sub: "" },
+    { id: "kaveri", name: "Kaveri Coffee", sub: "" },
+    { id: "chikmagalur-estate-coffee", name: "Chikmagalur Estate Coffee", sub: "" },
+    { id: "kaapi-thota", name: "Kaapi Thota", sub: "" },
+    { id: "hunkal", name: "Hunkal Estate", sub: "" },
+    { id: "karadykan", name: "Karadykan Estate", sub: "Sangameshwar Coffee · benchmark specialty lot" },
+    { id: "ghattadahally", name: "Ghattadahally Estate", sub: "7th-gen family farm, 906m" },
+    { id: "narmada", name: "Narmada Estate", sub: "240 acres, shade-grown, washed" },
+    { id: "badnekhan", name: "Badnekhan Estate", sub: "Merthi Mountain foothills" },
+    { id: "garigekhan", name: "Garigekhan Estate", sub: "Kelachandra Group, edge of Bhadra Tiger Reserve" },
+    { id: "basankhan", name: "Basankhan Estate", sub: "1450m, washed, S795 · 100+ yr family farm · via Blue Tokai" },
+    { id: "bettadamalali", name: "Bettadamalali Estate", sub: "3rd-gen · 2× Illy Quality Prize · Kent/San Ramon · Blue Tokai, Naivo" },
+    { id: "kaivalya", name: "Kaivalya Estate", sub: "via Blue Tokai" },
+    { id: "kalledevarapura", name: "Kalledevarapura Estate", sub: "Since 1900s · Blue Tokai's first partner farm · also Subko" },
+    { id: "kolli-berri", name: "Kolli Berri Estate", sub: "Kollibyle · women-run since 1942 · via Blue Tokai" },
+    { id: "kalledevarapura-b", name: "Kalledevarapura 'B' Estate", sub: "Kaimara · FoI award winner" },
+    { id: "shivagange", name: "Shivagange Estate", sub: "Rudra Giri mountains · via Blue Tokai" },
+    { id: "yelliemadaloo", name: "Yelliemadaloo Estate", sub: "Durgadabetta slopes · Arabica/Robusta · Blue Tokai" },
+    { id: "yelnoorkhan", name: "Yelnoorkhan Estate", sub: "Est. 1889 · 1616m (among India's highest) · Blue Tokai" },
+    { id: "hoysala", name: "Hoysala Estate", sub: "Anoor village · Monsoon Malabar AA · Blue Tokai" },
+    { id: "hippla", name: "Hippla Estate", sub: "Est. 1916 · five generations · Blue Tokai" },
+    { id: "thogarihunkal", name: "Thogarihunkal Estate", sub: "Since 1857 · Outer Giris · Naivo, Blue Tokai (honey)" },
+    { id: "unakki", name: "Unakki Estate", sub: "Joldal Palya · 4000-4500ft · Chandragiri · Blue Tokai, Naivo" },
+    { id: "indravathi", name: "Indravathi Estate", sub: "Organic · Narmada team · via Kāpikottai" },
+    { id: "udayagiri", name: "Udayagiri Estate", sub: "Baba Budan Giri · Kalasaiah family · via IKKIS" },
+    { id: "melkodige", name: "Melkodige Estate", sub: "Kudremukh bio-reserve · SLN 9 · Quick Brown Fox, IKKIS" },
+    { id: "ms-kotordie", name: "M.S. & Kotordie Estates", sub: "Balanoor Plantations, Basarikatte · FoI Best of Chikmagalur '14" },
+    { id: "netrakal", name: "Netrakal Estate", sub: "Koppa · FoI Robusta winner" },
+    { id: "hiregudda", name: "Hiregudda Estate", sub: "M.D. Balakrishna, Koppa · FoI Robusta winner" },
+    { id: "badra-group", name: "Badra Estates (group)", sub: "Jagalikal, Bettadakhan, Balehonnur · Mammen family 1943 · multiple FoI · Subko" },
+    { id: "kelagur", name: "Kelagur Coffee & Tea Estates", sub: "Javali · KC Roasters' family estate · Amrut-cask-aged" },
+    { id: "sandalwood", name: "Sandalwood Estate", sub: "Est. 1878, 1050m · via Blue Tokai" }
+  ]},
+  { region: "Coorg (Kodagu), Karnataka", note: "Larger, wilder estates near the Cauvery headwaters", estates: [
+    { id: "elkhill", name: "Elkhill", sub: "Edge of Dubare Forest" },
+    { id: "mooleh-manay", name: "Mooleh Manay (M.S. Estate)", sub: "North Coorg, Harangi backwaters" },
+    { id: "bibi", name: "Bibi Plantation", sub: "Suntikoppa" },
+    { id: "bynekere", name: "Bynekere Estate", sub: "1200m, misty valley" },
+    { id: "mojo", name: "Mojo Plantation", sub: "Organic, data-driven farming" },
+    { id: "crystal-valley", name: "Crystal Valley Estate", sub: "985m, Biligiri village, North Coorg" },
+    { id: "balanoor", name: "Balanoor Plantations", sub: "" },
+    { id: "ainmane", name: "Ainmane Coffee", sub: "" },
+    { id: "maverick-estate", name: "Maverick & Farmer Estate", sub: "140-acre family estate, Pollibetta" },
+    { id: "craigmore-kattimuttu", name: "Craigmore Kattimuttu Estate", sub: "900m · Robusta · via SICC" },
+    { id: "craigmore-tinyspot", name: "Craigmore Tinyspot Estate", sub: "980m · organic · via SICC" },
+    { id: "gerubane", name: "Gerubane Estate", sub: "1000m · Arabica/Robusta · via SICC" },
+    { id: "kanmad", name: "Kanmad Estate", sub: "1100-1400m · Rainforest Alliance · via SICC" },
+    { id: "komala", name: "Komala Estate", sub: "937m · Shyam Ponnappa, since 1930s · Chandragiri · SICC" },
+    { id: "venkids-valley", name: "Venkids Valley Estate", sub: "950-1150m · washed/natural/honey · via SICC" },
+    { id: "upper-udaya", name: "Upper Udaya Estate", sub: "1100m · I.M. Mandappa family · via SICC" },
+    { id: "hardoor", name: "Hardoor Estate", sub: "Near Suntikoppa · ~1000m · via Blue Tokai" },
+    { id: "tata-coorg", name: "Tata Coffee Coorg estates (group)", sub: "Pollibetta hub · Suntikoppa, Margolly, Devaracadoo, Yemmigoondi, Cottabetta + more" }
+  ]},
+  { region: "Other Western Ghats, Karnataka", note: "District not always specified by the roaster", estates: [
+    { id: "raxidi-lobo", name: "Raxidi Lobo Estate", sub: "Est. 1952, 3500-4200ft · organic, experimental ferments · via Siolim" },
+    { id: "anugraha", name: "Anugraha Estate", sub: "Organic, anaerobic ferments · via Siolim" },
+    { id: "ratnagiri", name: "Ratnagiri Estate", sub: "Bababudangiri hills · washed, honey, anaerobic lots" }
+  ]},
+  { region: "Sakleshpur / Hassan, Karnataka", note: "", estates: [
+    { id: "harley", name: "Harley Estate(s)", sub: "Classic Group · Best Robusta + Best Specialty Robusta FoI 2010 · widely sourced" },
+    { id: "salawara", name: "Salawara Estate", sub: "Belur · est. late 1880s · 360 acres · via Blue Tokai" },
+    { id: "sampigehoney", name: "Sampigehoney Estate", sub: "Manjarabad · 3800ft · via Blue Tokai" },
+    { id: "biccode", name: "Biccode Estate", sub: "Hassan · 950-1180m · women-led · Sangameshwar group · via SICC" },
+    { id: "kuchally", name: "Kuchally Estate", sub: "Hassan · 950-1050m · Excelsa/Robusta/Arabica · via SICC" },
+    { id: "malleshwara", name: "Malleshwara Estate", sub: "Hassan · 940m · Arabica/Robusta/Excelsa/Libex · via SICC" },
+    { id: "goorghully", name: "Goorghully Estate", sub: "Tata Coffee · Manjarabad · 910-1040m · FoI Best of Manjarabad" }
+  ]},
+  { region: "Biligiriranga (BR) Hills, Karnataka", note: "South of Mysore, ~1650m — among India's highest coffee-growing regions", estates: [
+    { id: "attikan", name: "Attikan Estate", sub: "Washed, S9 varietal, 1200-1650m · Sangameshwar group · via Blue Tokai" },
+    { id: "gungegiri", name: "Gungegiri Estate", sub: "910-1400m · Sangameshwar group · via Blue Tokai, SICC" }
+  ]},
+  { region: "Shevaroy Hills (Yercaud), Tamil Nadu", note: "MSP family estates, growing since the 1920s", estates: [
+    { id: "cauvery-peak", name: "Cauvery Peak Estate", sub: "MSP Plantations" },
+    { id: "nachammai", name: "Nachammai Estate", sub: "1400m" },
+    { id: "orchardale", name: "Orchardale Estate", sub: "MSP family · 4700-5000ft, newest/highest" },
+    { id: "moganad", name: "Moganad Estate", sub: "MSP Coffee" },
+    { id: "tipperary", name: "Tipperary Coffee", sub: "Organic" },
+    { id: "gowri", name: "Gowri Estate", sub: "MSP/Hill Tiller · 4300-4700ft · 'Best Arabica in India' 2017" },
+    { id: "stanmore", name: "Stanmore Estate", sub: "MSP/Hill Tiller · 4000-4300ft" },
+    { id: "bison-valley", name: "Bison Valley Estate", sub: "MSP/Hill Tiller · 4000-4500ft" },
+    { id: "hidden-falls", name: "Hidden Falls Estate", sub: "MSP/Hill Tiller · 3600-3800ft" },
+    { id: "kudiraipanjan", name: "Kudiraipanjan Estate", sub: "1400m · via Blue Tokai" },
+    { id: "moon-estate", name: "Moon Estate", sub: "Nagalur · FoI Best of Shevaroys 2014" },
+    { id: "thriveni-brooklyn", name: "Thriveni Brooklyn Estate", sub: "FoI Fine Cup Shevaroys winner 2016" }
+  ]},
+  { region: "Nilgiris, Tamil Nadu", note: "", estates: [
+    { id: "balmaadi", name: "Balmaadi Estate", sub: "Organic" },
+    { id: "estate-craft", name: "Estate Craft (Marvahulla Estate)", sub: "5000ft · via KC Roasters" },
+    { id: "aadhimalai", name: "Aadhimalai", sub: "Tribal producer cooperative" },
+    { id: "silver-cloud", name: "Silver Cloud Estate", sub: "Gudalur · FoI Best of Nilgiris 2014" },
+    { id: "northern-hay", name: "Northern Hay Estate", sub: "Mudumalai edge · century-old · via HumbleBean" },
+    { id: "doraikanal", name: "Doraikanal Estate", sub: "4000ft · 200-yr Shola shade · via KC Roasters" },
+    { id: "krishnagiri", name: "Krishnagiri Estate", sub: "1500m · via Blue Tokai" }
+  ]},
+  { region: "Anamalai / Valparai, Tamil Nadu", note: "", estates: [
+    { id: "valparai-tata", name: "Valparai Estate", sub: "Tata Coffee · FoI Best of Anamalais (multiple yrs)" },
+    { id: "manamboli", name: "Manamboli Estate", sub: "Savamalai Estates, Valparai" },
+    { id: "howdia", name: "Howdia Estate", sub: "Megamalai / High Wavy foothills · via Blue Tokai" },
+    { id: "varadymullai", name: "Varadymullai Estate", sub: "Est. 1945 · 2000 acres · via Blue Tokai" }
+  ]},
+  { region: "Kodaikanal (Palani Hills), Tamil Nadu", note: "", estates: [
+    { id: "nandan", name: "Nandan Coffee (Nandanvan Estate)", sub: "Organic" },
+    { id: "st-joseph", name: "St. Joseph Estate", sub: "Pulney Hills · natural + washed lots · via Blue Tokai (Winter Blend)" },
+    { id: "ram-pulney", name: "Ram Estate", sub: "Kamanur, Thandigudi · since 1860s · SLN 9 · Blue Tokai, Kāpikottai" },
+    { id: "loyola", name: "Loyola Estate", sub: "Lower Pulney, Dindigul · multiple FoI Best Arabica Pulneys · Blue Tokai" },
+    { id: "regis", name: "Regis Estate", sub: "FoI Best of Pulneys 2014" }
+  ]},
+  { region: "Wayanad, Kerala", note: "Robusta GI region", estates: [
+    { id: "bluhills", name: "Bluhills Spices & Beans", sub: "Single-estate Wayanad · shown at World of Coffee Copenhagen" },
+    { id: "17ad", name: "17AD Coffee", sub: "" },
+    { id: "mountain-brewed", name: "Mountain Brewed Coffee", sub: "" },
+    { id: "wayanadcraft", name: "Wayanadcraft", sub: "Organic" },
+    { id: "chundale", name: "Chundale Estate", sub: "990m · Robusta microlot · via 17AD" }
+  ]},
+  { region: "Travancore / Nelliyampathy, Kerala", note: "", estates: [
+    { id: "seethargundu", name: "Seethargundu Estate", sub: "Nelliyampathy · Poabs group · FoI 2010 Best Specialty Arabica · Blue Tokai" },
+    { id: "poabs", name: "Poabs Organic Estates", sub: "Nelliyampathy · 3500ft · biodynamic/fair trade · via KC Roasters" },
+    { id: "anai-kadu", name: "Anai Kadu Estate", sub: "Nisha Thomas & Kurian George · via Blue Tokai" }
+  ]},
+  { region: "Araku Valley, Andhra Pradesh", note: "Tribal-cooperative sourced, distinct high-altitude origin", estates: [
+    { id: "araku", name: "ARAKU Coffee (general line)", sub: "Organic" },
+    { id: "baankubedda", name: "Baankubedda (Araku Micro Climate)", sub: "Riverine island, 2789-2854ft, natural process · tribal co-op" },
+    { id: "native-araku", name: "Native Araku Coffee", sub: "" },
+    { id: "kusumaguda", name: "Kusumaguda (Vishalakshi FPC)", sub: "Araku village lot · via Blue Tokai" },
+    { id: "minimuluru", name: "Minimuluru Estate", sub: "APFDC · FoI Best of Araku Valley winner" },
+    { id: "ananthagiri", name: "Ananthagiri Estate", sub: "APFDC · FoI Best of Araku Valley winner" }
+  ]},
+  { region: "Koraput, Odisha", note: "Eastern Ghats — emerging origin, two Fine Cup Awards 2024", estates: [
+    { id: "koraput-coffees", name: "Koraput Coffees", sub: "Nirmala & Rajeshwari Reddy · via Blue Tokai" },
+    { id: "madhu-agro", name: "Madhu Agro Farm", sub: "900m · women-led · via SICC" },
+    { id: "duduma", name: "Duduma Farmer Producer Co.", sub: "900-1100m · via SICC" },
+    { id: "kruthi-kindriguda", name: "Kruthi / Kindriguda Tribal Farmers", sub: "FoI Best Arabica Naturals 2024" }
+  ]},
+  { region: "Northeast — Nagaland", note: "Fastest-growing new-origin frontier", estates: [
+    { id: "nagaland-coffee", name: "Nagaland Coffee", sub: "Naga Coffee Pvt Ltd · village lots: Wokha, Mon, Khar, Zunheboto" },
+    { id: "cosmic-beans", name: "Cosmic Beans", sub: "" },
+    { id: "7000-steps", name: "7000 Steps", sub: "" },
+    { id: "lithanro", name: "Lithanro Coffee / Jüro", sub: "Searon Yanthan · family estate + ~200 farmers · Chumoukedima" },
+    { id: "ete", name: "Été Coffee Roasters", sub: "NE India's first specialty roaster (2016) · Lichan Humtsoe" },
+    { id: "tsiese", name: "Tsiese Coffee Estate", sub: "Tsiesema, Kohima · 1500m · SL9/SL13" },
+    { id: "tsiesema-greysoul", name: "Tsiesema (Grey Soul 'Pink Lemonade')", sub: "Kohima · up to 1800m · Typica/SLN795 · via Grey Soul" }
+  ]},
+  { region: "Northeast — Mizoram", note: "", estates: [
+    { id: "lungdai-mizoram", name: "Lungdai, Kolasib (Mizoram)", sub: "Sln9 & Chandragiri, 1252 MASL, sun-dried natural · via Grey Soul" }
+  ]},
+  { region: "Northeast — Meghalaya", note: "", estates: [
+    { id: "warsanlyngdoh", name: "Warsanlyngdoh Coffee Collective", sub: "Khasi Hills · Chandragiri/Sln 9 · washed/natural/anaerobic · Blue Tokai" },
+    { id: "subko-garo", name: "Subko Project Sankalp (Garo Hills)", sub: "850-965m · SLN 795/Cauvery · SCA 86+ · via Subko" },
+    { id: "c7-nokrek", name: "Corridor Seven 'Nokrek Ranges'", sub: "West Garo Hills · 750-965m · via Corridor Seven" },
+    { id: "smoky-falls", name: "Smoky Falls Tribe Coffee", sub: "Tyrna + East Khasi Hills villages" },
+    { id: "zizira", name: "Zizira", sub: "Nongpoh, Ri-Bhoi smallholders" }
+  ]},
+  { region: "Northeast — Assam", note: "", estates: [
+    { id: "subko-seven-sisters", name: "Subko Project Seven Sisters", sub: "Dima Hasao · Caturra/Bourbon/Typica · traditional naturals" },
+    { id: "c7-dima-hasao", name: "Corridor Seven Dima Hasao Naturals", sub: "900-1400m · Chandragiri/SLN 9" },
+    { id: "saltoro-raga", name: "Saltoro 'Raga'", sub: "Dima Hasao · light roast Arabica" },
+    { id: "brahmaputra", name: "Brahmaputra Coffee", sub: "Karbi Anglong & Dima Hasao single origins" }
+  ]},
+  { region: "Outside India — Africa & Arabia", note: "Track by region → washing station (Ethiopia/Kenya). Washed = floral/citrus clarity; natural = berry jam.", estates: [
+    { id: "eth-yirgacheffe", name: "Ethiopia · Yirgacheffe", sub: "Gedeo · washed floral benchmark · Kochere, Wenago, Idido sub-lots" },
+    { id: "eth-sidama", name: "Ethiopia · Sidama/Sidamo", sub: "20+ woredas · Bensa, Bombe, Chire" },
+    { id: "eth-guji", name: "Ethiopia · Guji", sub: "Oromia · Hambela, Shakiso, Uraga · fruit-forward naturals" },
+    { id: "eth-harrar", name: "Ethiopia · Harrar", sub: "Eastern highlands · natural-only, wild blueberry/wine" },
+    { id: "eth-limu", name: "Ethiopia · Limu", sub: "Southwest · balanced washed" },
+    { id: "eth-jimma", name: "Ethiopia · Jimma/Kaffa", sub: "Naturals, tropical fruit" },
+    { id: "eth-nekemte", name: "Ethiopia · Nekemte/Lekempti", sub: "Wellega, west · fruity body" },
+    { id: "kenya-nyeri", name: "Kenya · Nyeri", sub: "SL28/SL34 · blackcurrant · factories: Gaturiri, Tegu" },
+    { id: "kenya-kirinyaga", name: "Kenya · Kirinyaga", sub: "Washed · Kiangoi, Kainamui factories" },
+    { id: "kenya-other", name: "Kenya · Embu / Meru / Kiambu / Murang'a", sub: "Washed, AA/AB/PB grades" },
+    { id: "rwanda", name: "Rwanda", sub: "Washed Bourbon · Nyamasheke, Huye · stations: Humure, Cyato" },
+    { id: "burundi", name: "Burundi", sub: "Kayanza, Ngozi · stations: Kibingo, Gaharo, Heza" },
+    { id: "tanzania", name: "Tanzania", sub: "Kilimanjaro (N), Mbeya (S) · Peaberry" },
+    { id: "uganda", name: "Uganda", sub: "Mt Elgon/Bugisu, Rwenzori, Sipi Falls" },
+    { id: "drc", name: "DR Congo", sub: "Kivu · Lake Kivu lots" },
+    { id: "malawi", name: "Malawi", sub: "Chitipa, Misuku Hills, Viphya" },
+    { id: "yemen", name: "Yemen", sub: "Haraz, Bani Matar, Mokha · ancient natural, wine-like" }
+  ]},
+  { region: "Outside India — Asia-Pacific", note: "Processing dominates flavor here — wet-hulling gives Indonesia its earthy body.", estates: [
+    { id: "sumatra", name: "Indonesia · Sumatra", sub: "Mandheling, Gayo (Aceh), Lintong · wet-hulled, earthy" },
+    { id: "sulawesi", name: "Indonesia · Sulawesi", sub: "Toraja / Kalossi (Celebes) · full body" },
+    { id: "java", name: "Indonesia · Java", sub: "Ijen Plateau estates (Jampit, Blawan)" },
+    { id: "bali", name: "Indonesia · Bali", sub: "Kintamani · volcanic, citrus" },
+    { id: "flores", name: "Indonesia · Flores", sub: "Bajawa" },
+    { id: "papua-id", name: "Indonesia · Papua", sub: "Wamena / Baliem Valley" },
+    { id: "vietnam", name: "Vietnam", sub: "Da Lat, Cau Dat, Son La · robusta + emerging arabica" },
+    { id: "png", name: "Papua New Guinea", sub: "Waghi Valley, Eastern Highlands · Sigri Estate (A/AA)" },
+    { id: "timor", name: "Timor-Leste", sub: "Ermera, Maubisse" },
+    { id: "china-yunnan", name: "China · Yunnan", sub: "Pu'er, Baoshan · emerging specialty" },
+    { id: "thailand", name: "Thailand", sub: "Doi Chang, Doi Tung, Chiang Rai" },
+    { id: "laos", name: "Laos", sub: "Bolaven Plateau" },
+    { id: "myanmar", name: "Myanmar", sub: "Ywangan, Shan State, Pyin Oo Lwin" },
+    { id: "philippines", name: "Philippines", sub: "Benguet/Cordillera, Sagada, Batangas (Barako)" }
+  ]},
+  { region: "Outside India — Americas", note: "Track by department/region; drop to estate level for Panama.", estates: [
+    { id: "colombia-huila", name: "Colombia · Huila", sub: "Washed sweetness · flagship department" },
+    { id: "colombia-narino", name: "Colombia · Nariño", sub: "High-altitude, bright" },
+    { id: "colombia-cauca", name: "Colombia · Cauca / Tolima", sub: "Washed, balanced" },
+    { id: "colombia-eje", name: "Colombia · Eje Cafetero (Quindío/Caldas/Risaralda)", sub: "Coffee Axis" },
+    { id: "colombia-sierra", name: "Colombia · Sierra Nevada / Santander", sub: "Distinct terroirs" },
+    { id: "brazil-minas", name: "Brazil · Sul de Minas", sub: "Chocolate, nut · pulped natural" },
+    { id: "brazil-cerrado", name: "Brazil · Cerrado Mineiro", sub: "DO region, consistent" },
+    { id: "brazil-mogiana", name: "Brazil · Mogiana", sub: "São Paulo/Minas border" },
+    { id: "brazil-bahia", name: "Brazil · Chapada Diamantina (Bahia)", sub: "High-altitude" },
+    { id: "guatemala-antigua", name: "Guatemala · Antigua", sub: "Volcanic, structured" },
+    { id: "guatemala-huehue", name: "Guatemala · Huehuetenango", sub: "Highest, bright" },
+    { id: "guatemala-atitlan", name: "Guatemala · Atitlán / Cobán / San Marcos", sub: "8 DO regions" },
+    { id: "costarica-tarrazu", name: "Costa Rica · Tarrazú", sub: "Bright, honey-process pioneer" },
+    { id: "costarica-valleys", name: "Costa Rica · West/Central Valley, Tres Ríos", sub: "Micro-mills" },
+    { id: "marcala-honduras", name: "Marcala, Honduras", sub: "La Paz · SHG, washed · [your first non-India origin]" },
+    { id: "honduras-other", name: "Honduras · Copán / Ocotepeque / Montecillos", sub: "Other key regions" },
+    { id: "panama-boquete", name: "Panama · Boquete", sub: "Gesha's home · estate: Hacienda La Esmeralda" },
+    { id: "panama-volcan", name: "Panama · Volcán / Chiriquí", sub: "Candela · high-altitude Gesha" },
+    { id: "elsalvador", name: "El Salvador", sub: "Apaneca-Ilamatepec, Santa Ana · Bourbon/Pacamara" },
+    { id: "nicaragua", name: "Nicaragua", sub: "Jinotega, Matagalpa, Nueva Segovia, Dipilto" },
+    { id: "mexico", name: "Mexico", sub: "Chiapas, Oaxaca (Pluma Hidalgo), Veracruz" },
+    { id: "peru", name: "Peru", sub: "Cajamarca, Cusco, Amazonas, Chanchamayo" },
+    { id: "bolivia", name: "Bolivia", sub: "Caranavi, Yungas" },
+    { id: "ecuador", name: "Ecuador", sub: "Loja, Pichincha, Galápagos" },
+    { id: "jamaica", name: "Jamaica · Blue Mountain", sub: "Mild, prized" },
+    { id: "hawaii", name: "USA · Hawaii (Kona/Ka'u/Maui)", sub: "Smooth, low-acid" }
+  ]}
+];
+
+const TOTAL = DATA.reduce((sum, r) => sum + r.estates.length, 0); // ~115 total (India + international) after research expansion
+const STORAGE_KEY = "estate-tracker-state";
+
+// The 8-rule brewer ruleset, keyed by process/roast bucket.
+// Each coffee maps to one bucket → one brewer recommendation + a "why" line.
+const BREWER_RULES = {
+  "washed-light": {
+    label: "Washed · light, floral/bright",
+    brewer: "V60 (cone)",
+    params: "medium-fine · 93–94°C · 1:16",
+    why: "Clarity is the point — a fast cone lifts the florals and citrus. A French press would mute exactly what makes it special."
+  },
+  "natural": {
+    label: "Natural · fruit-forward",
+    brewer: "Kalita Wave (flat-bottom)",
+    params: "medium · 92–94°C · 1:16",
+    why: "The even, slower bed builds sweetness and body to carry the fruit; a fast V60 runs thin and channels on dense naturals."
+  },
+  "honey": {
+    label: "Honey · syrupy, sweet",
+    brewer: "Clever Dripper or Kalita",
+    params: "medium · 91–93°C · 1:15",
+    why: "Immersion-then-drain squeezes out the syrupy honey sweetness and round mouthfeel without leaving silt in the cup."
+  },
+  "anaerobic": {
+    label: "Anaerobic / experimental ferment",
+    brewer: "AeroPress (cooler water)",
+    params: "medium · 88–90°C · 1:15",
+    why: "High-intensity, boozy lots need taming, not amplifying. AeroPress gives control over contact time and temperature."
+  },
+  "dark": {
+    label: "Dark roast · chocolatey, for milk",
+    brewer: "Moka pot, AeroPress or S. Indian filter",
+    params: "fine–medium · 90–92°C · 1:15",
+    why: "Pressure/percolation suits roast depth and body, and stands up to milk. A fast V60 goes flat and ashy on dark roasts."
+  },
+  "body": {
+    label: "Dense natural / robusta · body-forward",
+    brewer: "French Press or moka",
+    params: "coarse · 92–95°C · 1:15",
+    why: "Body is the goal here — embrace the oils and texture instead of filtering them out. A cone would strip the best part."
+  }
+};
+
+// Typical / known processing methods per estate or origin. This is a DATABASE
+// field — the estate's signature or documented range — NOT the process of any
+// single bag. Many Indian estates run several processes (lot/roaster-dependent);
+// international origins tend to have a regionally characteristic process.
+// Blank = not reliably disclosed / data pending. Keyed by estate id.
+const PROCESS_DATA = {
+  // — India: Chikmagalur —
+  "baarbara": "Washed & honey sun-dried",
+  "kerehaklu": "Washed, natural, honey, experimental (wide range)",
+  "karadykan": "Washed, natural, honey, anaerobic (lot/roaster-dependent)",
+  "narmada": "Washed (organic)",
+  "badnekhan": "Washed & natural",
+  "basankhan": "Washed (S795)",
+  "ratnagiri": "Washed, honey, anaerobic",
+  "anugraha": "Anaerobic & natural",
+  "bettadamalali": "Washed & natural",
+  "kalledevarapura": "Pulped sun-dried (honey); thermal-shock experimental (Subko)",
+  "kolli-berri": "Washed & natural",
+  "unakki": "Washed, natural, honey",
+  "thogarihunkal": "Washed, natural, honey",
+  "melkodige": "Washed & natural (SLN 9)",
+  "badra-group": "Washed, natural, experimental",
+  "kelagur": "Washed; Amrut-cask-aged experimental",
+  // — India: Coorg —
+  "mooleh-manay": "Washed, natural, honey",
+  "crystal-valley": "Washed (Coorg Arabica GI)",
+  "komala": "Washed & natural",
+  "venkids-valley": "Washed, natural, honey",
+  "upper-udaya": "Washed & natural",
+  "maverick-estate": "Washed, natural, experimental",
+  // — India: Other Karnataka —
+  "raxidi-lobo": "Experimental / anaerobic (W-series); naturals",
+  "harley": "Washed, natural, experimental (incl. sugarcane maceration)",
+  "biccode": "Washed & natural",
+  // — India: BR Hills —
+  "attikan": "Washed (S9); also darker roasts",
+  "gungegiri": "Washed & natural",
+  // — India: Tamil Nadu —
+  "gowri": "Washed",
+  "st-joseph": "Natural & washed",
+  "ram-pulney": "Washed & natural (SLN 9)",
+  "loyola": "Washed",
+  // — India: Kerala —
+  "seethargundu": "Washed (specialty Arabica)",
+  "poabs": "Washed (organic/biodynamic)",
+  "chundale": "Natural (Robusta microlot)",
+  "bluhills": "Natural & washed (Robusta)",
+  // — India: Araku / Koraput —
+  "baankubedda": "Natural",
+  "araku": "Washed & natural",
+  "kusumaguda": "Natural & washed",
+  "madhu-agro": "Washed & natural",
+  // — India: Northeast —
+  "lungdai-mizoram": "Natural (sun-dried)",
+  "tsiese": "Natural",
+  "tsiesema-greysoul": "Washed & natural",
+  "warsanlyngdoh": "Washed, natural, anaerobic",
+  "subko-garo": "Traditional & anaerobic naturals",
+  "c7-nokrek": "Natural",
+  "smoky-falls": "Natural & washed",
+  "subko-seven-sisters": "Traditional naturals",
+  "c7-dima-hasao": "Natural",
+  "saltoro-raga": "Washed (light-roast Arabica)",
+  // — Outside India: Africa & Arabia —
+  "eth-yirgacheffe": "Washed (classic); naturals common",
+  "eth-sidama": "Washed & natural",
+  "eth-guji": "Natural & washed",
+  "eth-harrar": "Natural (dry) — only",
+  "eth-limu": "Washed",
+  "eth-jimma": "Natural (mostly)",
+  "eth-nekemte": "Natural & washed",
+  "kenya-nyeri": "Washed (double-fermented/soaked)",
+  "kenya-kirinyaga": "Washed (double-fermented/soaked)",
+  "kenya-other": "Washed",
+  "rwanda": "Washed Bourbon; some natural",
+  "burundi": "Washed; some natural",
+  "tanzania": "Washed; peaberry sorted",
+  "uganda": "Washed arabica; natural robusta",
+  "drc": "Washed",
+  "malawi": "Washed",
+  "yemen": "Natural (dry) — traditional",
+  // — Outside India: Asia-Pacific —
+  "sumatra": "Wet-hulled (Giling Basah)",
+  "sulawesi": "Wet-hulled; some washed",
+  "java": "Washed (estate coffees)",
+  "bali": "Washed & natural",
+  "flores": "Washed & natural",
+  "papua-id": "Washed",
+  "vietnam": "Washed & natural; robusta natural",
+  "png": "Washed",
+  "timor": "Washed",
+  "china-yunnan": "Washed; increasingly honey/natural",
+  "thailand": "Washed, natural, honey",
+  "laos": "Washed & natural",
+  "myanmar": "Washed & natural",
+  "philippines": "Washed & natural; Barako natural",
+  // — Outside India: Americas —
+  "colombia-huila": "Washed (classic); naturals/honeys rising",
+  "colombia-narino": "Washed",
+  "colombia-cauca": "Washed",
+  "colombia-eje": "Washed",
+  "colombia-sierra": "Washed & natural",
+  "brazil-minas": "Natural & pulped natural",
+  "brazil-cerrado": "Natural & pulped natural",
+  "brazil-mogiana": "Natural & pulped natural",
+  "brazil-bahia": "Natural, pulped natural, washed",
+  "guatemala-antigua": "Washed (classic)",
+  "guatemala-huehue": "Washed",
+  "guatemala-atitlan": "Washed",
+  "costarica-tarrazu": "Honey/micro-mill pioneer; washed",
+  "costarica-valleys": "Honey, washed, natural",
+  "marcala-honduras": "Washed (SHG)",
+  "honduras-other": "Washed; naturals rising",
+  "panama-boquete": "Washed & natural (Gesha both)",
+  "panama-volcan": "Washed & natural",
+  "elsalvador": "Washed; natural & honey (Pacamara/Bourbon)",
+  "nicaragua": "Washed, natural, honey",
+  "mexico": "Washed (classic)",
+  "peru": "Washed",
+  "bolivia": "Washed",
+  "ecuador": "Washed & natural",
+  "jamaica": "Washed",
+  "hawaii": "Washed & natural",
+  // — Fill from research sweep (documented sources) —
+  "ghattadahally": "Washed",
+  "kaapi-thota": "Washed (blend-level)",
+  "kalledevarapura-b": "Washed & pulped sun-dried; experimental (kombucha/cultured)",
+  "ms-kotordie": "Washed & natural",
+  "mojo": "Washed (organic)",
+  "ainmane": "Washed (Robusta); organic Arabica",
+  "balanoor": "Washed & natural",
+  "craigmore-kattimuttu": "Natural",
+  "craigmore-tinyspot": "Washed (organic)",
+  "gerubane": "Washed",
+  "kanmad": "Natural",
+  "tata-coorg": "Washed & natural; honey (Sonnets single-origins)",
+  "kuchally": "Washed",
+  "malleshwara": "Natural",
+  "goorghully": "Honey; washed & natural (bulk)",
+  "cauvery-peak": "Washed",
+  "orchardale": "Natural (SLN9/795); group also washed/experimental",
+  "moganad": "Washed + experimental",
+  "stanmore": "Washed, natural, experimental",
+  "bison-valley": "Washed + experimental",
+  "hidden-falls": "Washed + experimental",
+  "kudiraipanjan": "Washed, honey, natural",
+  "balmaadi": "Natural & washed (organic/biodynamic)",
+  "estate-craft": "Fully washed",
+  "aadhimalai": "Washed; traditional dried-cherry",
+  "northern-hay": "Natural (sun-dried Robusta)",
+  "doraikanal": "Washed (parchment)",
+  "krishnagiri": "Washed, honey sun-dried, natural",
+  "valparai-tata": "Washed & natural",
+  "howdia": "Washed",
+  "17ad": "Natural (sun-dried Robusta)",
+  "native-araku": "Washed, natural, honey/PSD",
+  "koraput-coffees": "Washed",
+  "duduma": "Washed",
+  "nagaland-coffee": "Natural, honey, washed",
+  "7000-steps": "Natural",
+  "ete": "Natural",
+  "lithanro": "Washed & natural",
+  "zizira": "Natural"
+};
+
+// Estates confirmed tried via links Aman has sent in chat, with roaster + the
+// process bucket of the specific lot he bought. New entries auto-populate on
+// next load, without overwriting any manual edits already saved.
+const CONFIRMED_TRIED = [
+  { id: "baarbara", roaster: "Tulum Coffee", process: "honey" },
+  { id: "lungdai-mizoram", roaster: "Grey Soul", process: "natural" },
+  { id: "raxidi-lobo", roaster: "Siolim", process: "anaerobic" },
+  { id: "ratnagiri", roaster: "Siolim", process: "anaerobic" },
+  { id: "baankubedda", roaster: "Araku Coffee", process: "natural" },
+  { id: "marcala-honduras", roaster: "", process: "washed-light" },
+  { id: "attikan", roaster: "Blue Tokai", process: "dark" },
+  { id: "basankhan", roaster: "Blue Tokai", process: "dark" },
+  { id: "st-joseph", roaster: "Blue Tokai", process: "natural" }
+];
+
+let state = {};
+let currentFilter = "all";
+
+async function loadState(){
+  try{
+    const res = await window.storage.get(STORAGE_KEY);
+    if(res && res.value){
+      state = JSON.parse(res.value);
+    }
+  }catch(e){
+    state = {};
+  }
+  // Merge in confirmed-tried defaults for anything not already touched by hand
+  let changed = false;
+  CONFIRMED_TRIED.forEach(entry => {
+    if(!state[entry.id]){
+      state[entry.id] = { tried: true, roaster: entry.roaster || "", process: entry.process || "" };
+      changed = true;
+    } else {
+      if(state[entry.id].tried && !state[entry.id].roaster && entry.roaster){
+        state[entry.id].roaster = entry.roaster; changed = true;
+      }
+      if(state[entry.id].tried && !state[entry.id].process && entry.process){
+        state[entry.id].process = entry.process; changed = true;
+      }
+    }
+  });
+  if(changed) saveState();
+  render();
+}
+
+async function saveState(){
+  const indicator = document.getElementById("saveIndicator");
+  try{
+    await window.storage.set(STORAGE_KEY, JSON.stringify(state));
+    indicator.textContent = "Saved locally to your device.";
+  }catch(e){
+    indicator.textContent = "Couldn't save — changes may not persist.";
+  }
+}
+
+function toggleTried(id){
+  if(!state[id]) state[id] = {};
+  state[id].tried = !state[id].tried;
+  saveState();
+  render();
+}
+
+function updateNote(id, val){
+  if(!state[id]) state[id] = {};
+  state[id].notes = val;
+  saveState();
+}
+
+function updateRoaster(id, val){
+  if(!state[id]) state[id] = {};
+  state[id].roaster = val;
+  saveState();
+  render();
+}
+
+function updateProcess(id, val){
+  if(!state[id]) state[id] = {};
+  state[id].process = val;
+  saveState();
+  render();
+}
+
+function toggleRegion(idx){
+  const body = document.getElementById("region-body-" + idx);
+  body.classList.toggle("collapsed");
+}
+
+function toggleExpand(id){
+  const el = document.getElementById("notes-" + id);
+  el.classList.toggle("open");
+}
+
+function render(){
+  const triedCount = Object.values(state).filter(s => s.tried).length;
+  document.getElementById("progressNum").innerHTML = triedCount + '<span> / ' + TOTAL + ' tried</span>';
+  document.getElementById("barFill").style.width = Math.round((triedCount / TOTAL) * 100) + "%";
+
+  const container = document.getElementById("regions");
+  container.innerHTML = "";
+
+  DATA.forEach((region, ridx) => {
+    const visibleEstates = region.estates.filter(e => {
+      const tried = !!(state[e.id] && state[e.id].tried);
+      if(currentFilter === "tried") return tried;
+      if(currentFilter === "untried") return !tried;
+      return true;
+    });
+    if(visibleEstates.length === 0) return;
+
+    const regionTried = region.estates.filter(e => state[e.id] && state[e.id].tried).length;
+
+    const section = document.createElement("div");
+    section.className = "region";
+    section.innerHTML = `
+      <div class="region-head" onclick="toggleRegion(${ridx})">
+        <div class="region-name">${region.region}</div>
+        <div class="region-meta">${regionTried} / ${region.estates.length}</div>
+      </div>
+      <div class="region-body" id="region-body-${ridx}"></div>
+    `;
+    container.appendChild(section);
+
+    const body = section.querySelector(".region-body");
+    visibleEstates.forEach(estate => {
+      const tried = !!(state[estate.id] && state[estate.id].tried);
+      const notes = (state[estate.id] && state[estate.id].notes) || "";
+      const roaster = (state[estate.id] && state[estate.id].roaster) || "";
+      const roasterList = roaster.split(",").map(r => r.trim()).filter(Boolean);
+      const process = (state[estate.id] && state[estate.id].process) || "";
+      const rec = BREWER_RULES[process];
+
+      const processOptions = ['<option value="">Set process for a brewer tip…</option>']
+        .concat(Object.keys(BREWER_RULES).map(k =>
+          `<option value="${k}"${k === process ? " selected" : ""}>${BREWER_RULES[k].label}</option>`
+        )).join("");
+
+      const recBox = rec ? `
+        <div class="brewer-rec">
+          <div class="rec-brewer">☕ ${rec.brewer}</div>
+          <div class="rec-params">${rec.params}</div>
+          <div class="rec-why">${rec.why}</div>
+        </div>` : "";
+
+      const row = document.createElement("div");
+      row.className = "estate-row" + (tried ? " tried" : "");
+      row.innerHTML = `
+        <button class="check ${tried ? 'tried' : ''}" onclick="toggleTried('${estate.id}')">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 4" stroke="#f2ecdc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="estate-main">
+          <div class="estate-top" onclick="toggleExpand('${estate.id}')">
+            <div>
+              <div class="estate-name">${estate.name}</div>
+              ${estate.sub ? `<div class="estate-sub">${estate.sub}</div>` : ""}
+              ${PROCESS_DATA[estate.id] ? `<div class="estate-process"><b>process</b> · ${PROCESS_DATA[estate.id]}</div>` : ""}
+              ${roasterList.length ? `<div class="roaster-tag">${roasterList.map(r => `<span>via ${r}</span>`).join("")}</div>` : ""}
+            </div>
+            <div class="expand-arrow">notes</div>
+          </div>
+          <div class="estate-notes" id="notes-${estate.id}">
+            <select class="process-select" onchange="updateProcess('${estate.id}', this.value)">${processOptions}</select>
+            ${recBox}
+            <input class="roaster-input" type="text" placeholder="Roaster(s), comma-separated..." value="${roaster}" onchange="updateRoaster('${estate.id}', this.value)" />
+            <textarea placeholder="Process, altitude, tasting notes..." onchange="updateNote('${estate.id}', this.value)">${notes}</textarea>
+          </div>
+        </div>
+      `;
+      if(notes || roaster || process) row.querySelector(".estate-notes").classList.add("open");
+      body.appendChild(row);
+    });
+  });
+}
+
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+loadState();
+</script>
+</body>
+</html>

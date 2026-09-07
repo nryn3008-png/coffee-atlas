@@ -1,0 +1,1589 @@
+{
+  "regions": [
+    {
+      "name": "Chikmagalur, Karnataka",
+      "continent_group": "India",
+      "country": "India",
+      "note": "Where Indian coffee began — chocolatey, classic arabica",
+      "sort_order": 0,
+      "estates": [
+        {
+          "slug": "baarbara",
+          "name": "Baarbara Estate",
+          "subtitle": "Bababudangiri · since 1896, shade-grown Sel. 795",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & honey sun-dried"
+        },
+        {
+          "slug": "kerehaklu",
+          "name": "Kerehaklu",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, honey, experimental (wide range)"
+        },
+        {
+          "slug": "amyra",
+          "name": "Amyra Farms",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "kaveri",
+          "name": "Kaveri Coffee",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "chikmagalur-estate-coffee",
+          "name": "Chikmagalur Estate Coffee",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "kaapi-thota",
+          "name": "Kaapi Thota",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (blend-level)"
+        },
+        {
+          "slug": "hunkal",
+          "name": "Hunkal Estate",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "karadykan",
+          "name": "Karadykan Estate",
+          "subtitle": "Sangameshwar Coffee · benchmark specialty lot",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, honey, anaerobic (lot/roaster-dependent)"
+        },
+        {
+          "slug": "ghattadahally",
+          "name": "Ghattadahally Estate",
+          "subtitle": "7th-gen family farm, 906m",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "narmada",
+          "name": "Narmada Estate",
+          "subtitle": "240 acres, shade-grown, washed",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (organic)"
+        },
+        {
+          "slug": "badnekhan",
+          "name": "Badnekhan Estate",
+          "subtitle": "Merthi Mountain foothills",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "garigekhan",
+          "name": "Garigekhan Estate",
+          "subtitle": "Kelachandra Group, edge of Bhadra Tiger Reserve",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "basankhan",
+          "name": "Basankhan Estate",
+          "subtitle": "1450m, washed, S795 · 100+ yr family farm · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (S795)"
+        },
+        {
+          "slug": "bettadamalali",
+          "name": "Bettadamalali Estate",
+          "subtitle": "3rd-gen · 2× Illy Quality Prize · Kent/San Ramon · Blue Tokai, Naivo",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "kaivalya",
+          "name": "Kaivalya Estate",
+          "subtitle": "via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "kalledevarapura",
+          "name": "Kalledevarapura Estate",
+          "subtitle": "Since 1900s · Blue Tokai's first partner farm · also Subko",
+          "entity_type": "single_estate",
+          "typical_process_note": "Pulped sun-dried (honey); thermal-shock experimental (Subko)"
+        },
+        {
+          "slug": "kolli-berri",
+          "name": "Kolli Berri Estate",
+          "subtitle": "Kollibyle · women-run since 1942 · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "kalledevarapura-b",
+          "name": "Kalledevarapura 'B' Estate",
+          "subtitle": "Kaimara · FoI award winner",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & pulped sun-dried; experimental (kombucha/cultured)"
+        },
+        {
+          "slug": "shivagange",
+          "name": "Shivagange Estate",
+          "subtitle": "Rudra Giri mountains · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "yelliemadaloo",
+          "name": "Yelliemadaloo Estate",
+          "subtitle": "Durgadabetta slopes · Arabica/Robusta · Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "yelnoorkhan",
+          "name": "Yelnoorkhan Estate",
+          "subtitle": "Est. 1889 · 1616m (among India's highest) · Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "hoysala",
+          "name": "Hoysala Estate",
+          "subtitle": "Anoor village · Monsoon Malabar AA · Blue Tokai",
+          "entity_type": "cooperative",
+          "typical_process_note": null
+        },
+        {
+          "slug": "hippla",
+          "name": "Hippla Estate",
+          "subtitle": "Est. 1916 · five generations · Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "thogarihunkal",
+          "name": "Thogarihunkal Estate",
+          "subtitle": "Since 1857 · Outer Giris · Naivo, Blue Tokai (honey)",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, honey"
+        },
+        {
+          "slug": "unakki",
+          "name": "Unakki Estate",
+          "subtitle": "Joldal Palya · 4000-4500ft · Chandragiri · Blue Tokai, Naivo",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, honey"
+        },
+        {
+          "slug": "indravathi",
+          "name": "Indravathi Estate",
+          "subtitle": "Organic · Narmada team · via Kāpikottai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "udayagiri",
+          "name": "Udayagiri Estate",
+          "subtitle": "Baba Budan Giri · Kalasaiah family · via IKKIS",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "melkodige",
+          "name": "Melkodige Estate",
+          "subtitle": "Kudremukh bio-reserve · SLN 9 · Quick Brown Fox, IKKIS",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural (SLN 9)"
+        },
+        {
+          "slug": "ms-kotordie",
+          "name": "M.S. & Kotordie Estates",
+          "subtitle": "Balanoor Plantations, Basarikatte · FoI Best of Chikmagalur '14",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "netrakal",
+          "name": "Netrakal Estate",
+          "subtitle": "Koppa · FoI Robusta winner",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "hiregudda",
+          "name": "Hiregudda Estate",
+          "subtitle": "M.D. Balakrishna, Koppa · FoI Robusta winner",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "badra-group",
+          "name": "Badra Estates (group)",
+          "subtitle": "Jagalikal, Bettadakhan, Balehonnur · Mammen family 1943 · multiple FoI · Subko",
+          "entity_type": "estate_group",
+          "typical_process_note": "Washed, natural, experimental"
+        },
+        {
+          "slug": "kelagur",
+          "name": "Kelagur Coffee & Tea Estates",
+          "subtitle": "Javali · KC Roasters' family estate · Amrut-cask-aged",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed; Amrut-cask-aged experimental"
+        },
+        {
+          "slug": "sandalwood",
+          "name": "Sandalwood Estate",
+          "subtitle": "Est. 1878, 1050m · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Coorg (Kodagu), Karnataka",
+      "continent_group": "India",
+      "country": "India",
+      "note": "Larger, wilder estates near the Cauvery headwaters",
+      "sort_order": 1,
+      "estates": [
+        {
+          "slug": "elkhill",
+          "name": "Elkhill",
+          "subtitle": "Edge of Dubare Forest",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "mooleh-manay",
+          "name": "Mooleh Manay (M.S. Estate)",
+          "subtitle": "North Coorg, Harangi backwaters",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, honey"
+        },
+        {
+          "slug": "bibi",
+          "name": "Bibi Plantation",
+          "subtitle": "Suntikoppa",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "bynekere",
+          "name": "Bynekere Estate",
+          "subtitle": "1200m, misty valley",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "mojo",
+          "name": "Mojo Plantation",
+          "subtitle": "Organic, data-driven farming",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (organic)"
+        },
+        {
+          "slug": "crystal-valley",
+          "name": "Crystal Valley Estate",
+          "subtitle": "985m, Biligiri village, North Coorg",
+          "entity_type": "cooperative",
+          "typical_process_note": "Washed (Coorg Arabica GI)"
+        },
+        {
+          "slug": "balanoor",
+          "name": "Balanoor Plantations",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "ainmane",
+          "name": "Ainmane Coffee",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (Robusta); organic Arabica"
+        },
+        {
+          "slug": "maverick-estate",
+          "name": "Maverick & Farmer Estate",
+          "subtitle": "140-acre family estate, Pollibetta",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, experimental"
+        },
+        {
+          "slug": "craigmore-kattimuttu",
+          "name": "Craigmore Kattimuttu Estate",
+          "subtitle": "900m · Robusta · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "craigmore-tinyspot",
+          "name": "Craigmore Tinyspot Estate",
+          "subtitle": "980m · organic · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (organic)"
+        },
+        {
+          "slug": "gerubane",
+          "name": "Gerubane Estate",
+          "subtitle": "1000m · Arabica/Robusta · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "kanmad",
+          "name": "Kanmad Estate",
+          "subtitle": "1100-1400m · Rainforest Alliance · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "komala",
+          "name": "Komala Estate",
+          "subtitle": "937m · Shyam Ponnappa, since 1930s · Chandragiri · SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "venkids-valley",
+          "name": "Venkids Valley Estate",
+          "subtitle": "950-1150m · washed/natural/honey · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, honey"
+        },
+        {
+          "slug": "upper-udaya",
+          "name": "Upper Udaya Estate",
+          "subtitle": "1100m · I.M. Mandappa family · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "hardoor",
+          "name": "Hardoor Estate",
+          "subtitle": "Near Suntikoppa · ~1000m · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "tata-coorg",
+          "name": "Tata Coffee Coorg estates (group)",
+          "subtitle": "Pollibetta hub · Suntikoppa, Margolly, Devaracadoo, Yemmigoondi, Cottabetta + more",
+          "entity_type": "estate_group",
+          "typical_process_note": "Washed & natural; honey (Sonnets single-origins)"
+        }
+      ]
+    },
+    {
+      "name": "Other Western Ghats, Karnataka",
+      "continent_group": "India",
+      "country": "India",
+      "note": "District not always specified by the roaster",
+      "sort_order": 2,
+      "estates": [
+        {
+          "slug": "raxidi-lobo",
+          "name": "Raxidi Lobo Estate",
+          "subtitle": "Est. 1952, 3500-4200ft · organic, experimental ferments · via Siolim",
+          "entity_type": "single_estate",
+          "typical_process_note": "Experimental / anaerobic (W-series); naturals"
+        },
+        {
+          "slug": "anugraha",
+          "name": "Anugraha Estate",
+          "subtitle": "Organic, anaerobic ferments · via Siolim",
+          "entity_type": "single_estate",
+          "typical_process_note": "Anaerobic & natural"
+        },
+        {
+          "slug": "ratnagiri",
+          "name": "Ratnagiri Estate",
+          "subtitle": "Bababudangiri hills · washed, honey, anaerobic lots",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, honey, anaerobic"
+        }
+      ]
+    },
+    {
+      "name": "Sakleshpur / Hassan, Karnataka",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 3,
+      "estates": [
+        {
+          "slug": "harley",
+          "name": "Harley Estate(s)",
+          "subtitle": "Classic Group · Best Robusta + Best Specialty Robusta FoI 2010 · widely sourced",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, experimental (incl. sugarcane maceration)"
+        },
+        {
+          "slug": "salawara",
+          "name": "Salawara Estate",
+          "subtitle": "Belur · est. late 1880s · 360 acres · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "sampigehoney",
+          "name": "Sampigehoney Estate",
+          "subtitle": "Manjarabad · 3800ft · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "biccode",
+          "name": "Biccode Estate",
+          "subtitle": "Hassan · 950-1180m · women-led · Sangameshwar group · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "kuchally",
+          "name": "Kuchally Estate",
+          "subtitle": "Hassan · 950-1050m · Excelsa/Robusta/Arabica · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "malleshwara",
+          "name": "Malleshwara Estate",
+          "subtitle": "Hassan · 940m · Arabica/Robusta/Excelsa/Libex · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "goorghully",
+          "name": "Goorghully Estate",
+          "subtitle": "Tata Coffee · Manjarabad · 910-1040m · FoI Best of Manjarabad",
+          "entity_type": "single_estate",
+          "typical_process_note": "Honey; washed & natural (bulk)"
+        }
+      ]
+    },
+    {
+      "name": "Biligiriranga (BR) Hills, Karnataka",
+      "continent_group": "India",
+      "country": "India",
+      "note": "South of Mysore, ~1650m — among India's highest coffee-growing regions",
+      "sort_order": 4,
+      "estates": [
+        {
+          "slug": "attikan",
+          "name": "Attikan Estate",
+          "subtitle": "Washed, S9 varietal, 1200-1650m · Sangameshwar group · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (S9); also darker roasts"
+        },
+        {
+          "slug": "gungegiri",
+          "name": "Gungegiri Estate",
+          "subtitle": "910-1400m · Sangameshwar group · via Blue Tokai, SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        }
+      ]
+    },
+    {
+      "name": "Shevaroy Hills (Yercaud), Tamil Nadu",
+      "continent_group": "India",
+      "country": "India",
+      "note": "MSP family estates, growing since the 1920s",
+      "sort_order": 5,
+      "estates": [
+        {
+          "slug": "cauvery-peak",
+          "name": "Cauvery Peak Estate",
+          "subtitle": "MSP Plantations",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "nachammai",
+          "name": "Nachammai Estate",
+          "subtitle": "1400m",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "orchardale",
+          "name": "Orchardale Estate",
+          "subtitle": "MSP family · 4700-5000ft, newest/highest",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural (SLN9/795); group also washed/experimental"
+        },
+        {
+          "slug": "moganad",
+          "name": "Moganad Estate",
+          "subtitle": "MSP Coffee",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed + experimental"
+        },
+        {
+          "slug": "tipperary",
+          "name": "Tipperary Coffee",
+          "subtitle": "Organic",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "gowri",
+          "name": "Gowri Estate",
+          "subtitle": "MSP/Hill Tiller · 4300-4700ft · 'Best Arabica in India' 2017",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "stanmore",
+          "name": "Stanmore Estate",
+          "subtitle": "MSP/Hill Tiller · 4000-4300ft",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, experimental"
+        },
+        {
+          "slug": "bison-valley",
+          "name": "Bison Valley Estate",
+          "subtitle": "MSP/Hill Tiller · 4000-4500ft",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed + experimental"
+        },
+        {
+          "slug": "hidden-falls",
+          "name": "Hidden Falls Estate",
+          "subtitle": "MSP/Hill Tiller · 3600-3800ft",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed + experimental"
+        },
+        {
+          "slug": "kudiraipanjan",
+          "name": "Kudiraipanjan Estate",
+          "subtitle": "1400m · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, honey, natural"
+        },
+        {
+          "slug": "moon-estate",
+          "name": "Moon Estate",
+          "subtitle": "Nagalur · FoI Best of Shevaroys 2014",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "thriveni-brooklyn",
+          "name": "Thriveni Brooklyn Estate",
+          "subtitle": "FoI Fine Cup Shevaroys winner 2016",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Nilgiris, Tamil Nadu",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 6,
+      "estates": [
+        {
+          "slug": "balmaadi",
+          "name": "Balmaadi Estate",
+          "subtitle": "Organic",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural & washed (organic/biodynamic)"
+        },
+        {
+          "slug": "estate-craft",
+          "name": "Estate Craft (Marvahulla Estate)",
+          "subtitle": "5000ft · via KC Roasters",
+          "entity_type": "single_estate",
+          "typical_process_note": "Fully washed"
+        },
+        {
+          "slug": "aadhimalai",
+          "name": "Aadhimalai",
+          "subtitle": "Tribal producer cooperative",
+          "entity_type": "cooperative",
+          "typical_process_note": "Washed; traditional dried-cherry"
+        },
+        {
+          "slug": "silver-cloud",
+          "name": "Silver Cloud Estate",
+          "subtitle": "Gudalur · FoI Best of Nilgiris 2014",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "northern-hay",
+          "name": "Northern Hay Estate",
+          "subtitle": "Mudumalai edge · century-old · via HumbleBean",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural (sun-dried Robusta)"
+        },
+        {
+          "slug": "doraikanal",
+          "name": "Doraikanal Estate",
+          "subtitle": "4000ft · 200-yr Shola shade · via KC Roasters",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (parchment)"
+        },
+        {
+          "slug": "krishnagiri",
+          "name": "Krishnagiri Estate",
+          "subtitle": "1500m · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, honey sun-dried, natural"
+        }
+      ]
+    },
+    {
+      "name": "Anamalai / Valparai, Tamil Nadu",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 7,
+      "estates": [
+        {
+          "slug": "valparai-tata",
+          "name": "Valparai Estate",
+          "subtitle": "Tata Coffee · FoI Best of Anamalais (multiple yrs)",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "manamboli",
+          "name": "Manamboli Estate",
+          "subtitle": "Savamalai Estates, Valparai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "howdia",
+          "name": "Howdia Estate",
+          "subtitle": "Megamalai / High Wavy foothills · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "varadymullai",
+          "name": "Varadymullai Estate",
+          "subtitle": "Est. 1945 · 2000 acres · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Kodaikanal (Palani Hills), Tamil Nadu",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 8,
+      "estates": [
+        {
+          "slug": "nandan",
+          "name": "Nandan Coffee (Nandanvan Estate)",
+          "subtitle": "Organic",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "st-joseph",
+          "name": "St. Joseph Estate",
+          "subtitle": "Pulney Hills · natural + washed lots · via Blue Tokai (Winter Blend)",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural & washed"
+        },
+        {
+          "slug": "ram-pulney",
+          "name": "Ram Estate",
+          "subtitle": "Kamanur, Thandigudi · since 1860s · SLN 9 · Blue Tokai, Kāpikottai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural (SLN 9)"
+        },
+        {
+          "slug": "loyola",
+          "name": "Loyola Estate",
+          "subtitle": "Lower Pulney, Dindigul · multiple FoI Best Arabica Pulneys · Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "regis",
+          "name": "Regis Estate",
+          "subtitle": "FoI Best of Pulneys 2014",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Wayanad, Kerala",
+      "continent_group": "India",
+      "country": "India",
+      "note": "Robusta GI region",
+      "sort_order": 9,
+      "estates": [
+        {
+          "slug": "bluhills",
+          "name": "Bluhills Spices & Beans",
+          "subtitle": "Single-estate Wayanad · shown at World of Coffee Copenhagen",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural & washed (Robusta)"
+        },
+        {
+          "slug": "17ad",
+          "name": "17AD Coffee",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural (sun-dried Robusta)"
+        },
+        {
+          "slug": "mountain-brewed",
+          "name": "Mountain Brewed Coffee",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "wayanadcraft",
+          "name": "Wayanadcraft",
+          "subtitle": "Organic",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "chundale",
+          "name": "Chundale Estate",
+          "subtitle": "990m · Robusta microlot · via 17AD",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural (Robusta microlot)"
+        }
+      ]
+    },
+    {
+      "name": "Travancore / Nelliyampathy, Kerala",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 10,
+      "estates": [
+        {
+          "slug": "seethargundu",
+          "name": "Seethargundu Estate",
+          "subtitle": "Nelliyampathy · Poabs group · FoI 2010 Best Specialty Arabica · Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (specialty Arabica)"
+        },
+        {
+          "slug": "poabs",
+          "name": "Poabs Organic Estates",
+          "subtitle": "Nelliyampathy · 3500ft · biodynamic/fair trade · via KC Roasters",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (organic/biodynamic)"
+        },
+        {
+          "slug": "anai-kadu",
+          "name": "Anai Kadu Estate",
+          "subtitle": "Nisha Thomas & Kurian George · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Araku Valley, Andhra Pradesh",
+      "continent_group": "India",
+      "country": "India",
+      "note": "Tribal-cooperative sourced, distinct high-altitude origin",
+      "sort_order": 11,
+      "estates": [
+        {
+          "slug": "araku",
+          "name": "ARAKU Coffee (general line)",
+          "subtitle": "Organic",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "baankubedda",
+          "name": "Baankubedda (Araku Micro Climate)",
+          "subtitle": "Riverine island, 2789-2854ft, natural process · tribal co-op",
+          "entity_type": "cooperative",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "native-araku",
+          "name": "Native Araku Coffee",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed, natural, honey/PSD"
+        },
+        {
+          "slug": "kusumaguda",
+          "name": "Kusumaguda (Vishalakshi FPC)",
+          "subtitle": "Araku village lot · via Blue Tokai",
+          "entity_type": "cooperative",
+          "typical_process_note": "Natural & washed"
+        },
+        {
+          "slug": "minimuluru",
+          "name": "Minimuluru Estate",
+          "subtitle": "APFDC · FoI Best of Araku Valley winner",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "ananthagiri",
+          "name": "Ananthagiri Estate",
+          "subtitle": "APFDC · FoI Best of Araku Valley winner",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Koraput, Odisha",
+      "continent_group": "India",
+      "country": "India",
+      "note": "Eastern Ghats — emerging origin, two Fine Cup Awards 2024",
+      "sort_order": 12,
+      "estates": [
+        {
+          "slug": "koraput-coffees",
+          "name": "Koraput Coffees",
+          "subtitle": "Nirmala & Rajeshwari Reddy · via Blue Tokai",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "madhu-agro",
+          "name": "Madhu Agro Farm",
+          "subtitle": "900m · women-led · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "duduma",
+          "name": "Duduma Farmer Producer Co.",
+          "subtitle": "900-1100m · via SICC",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "kruthi-kindriguda",
+          "name": "Kruthi / Kindriguda Tribal Farmers",
+          "subtitle": "FoI Best Arabica Naturals 2024",
+          "entity_type": "cooperative",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Northeast — Nagaland",
+      "continent_group": "India",
+      "country": "India",
+      "note": "Fastest-growing new-origin frontier",
+      "sort_order": 13,
+      "estates": [
+        {
+          "slug": "nagaland-coffee",
+          "name": "Nagaland Coffee",
+          "subtitle": "Naga Coffee Pvt Ltd · village lots: Wokha, Mon, Khar, Zunheboto",
+          "entity_type": "cooperative",
+          "typical_process_note": "Natural, honey, washed"
+        },
+        {
+          "slug": "cosmic-beans",
+          "name": "Cosmic Beans",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        },
+        {
+          "slug": "7000-steps",
+          "name": "7000 Steps",
+          "subtitle": null,
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "lithanro",
+          "name": "Lithanro Coffee / Jüro",
+          "subtitle": "Searon Yanthan · family estate + ~200 farmers · Chumoukedima",
+          "entity_type": "cooperative",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "ete",
+          "name": "Été Coffee Roasters",
+          "subtitle": "NE India's first specialty roaster (2016) · Lichan Humtsoe",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "tsiese",
+          "name": "Tsiese Coffee Estate",
+          "subtitle": "Tsiesema, Kohima · 1500m · SL9/SL13",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "tsiesema-greysoul",
+          "name": "Tsiesema (Grey Soul 'Pink Lemonade')",
+          "subtitle": "Kohima · up to 1800m · Typica/SLN795 · via Grey Soul",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed & natural"
+        }
+      ]
+    },
+    {
+      "name": "Northeast — Mizoram",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 14,
+      "estates": [
+        {
+          "slug": "lungdai-mizoram",
+          "name": "Lungdai, Kolasib (Mizoram)",
+          "subtitle": "Sln9 & Chandragiri, 1252 MASL, sun-dried natural · via Grey Soul",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural (sun-dried)"
+        }
+      ]
+    },
+    {
+      "name": "Northeast — Meghalaya",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 15,
+      "estates": [
+        {
+          "slug": "warsanlyngdoh",
+          "name": "Warsanlyngdoh Coffee Collective",
+          "subtitle": "Khasi Hills · Chandragiri/Sln 9 · washed/natural/anaerobic · Blue Tokai",
+          "entity_type": "cooperative",
+          "typical_process_note": "Washed, natural, anaerobic"
+        },
+        {
+          "slug": "subko-garo",
+          "name": "Subko Project Sankalp (Garo Hills)",
+          "subtitle": "850-965m · SLN 795/Cauvery · SCA 86+ · via Subko",
+          "entity_type": "cooperative",
+          "typical_process_note": "Traditional & anaerobic naturals"
+        },
+        {
+          "slug": "c7-nokrek",
+          "name": "Corridor Seven 'Nokrek Ranges'",
+          "subtitle": "West Garo Hills · 750-965m · via Corridor Seven",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "smoky-falls",
+          "name": "Smoky Falls Tribe Coffee",
+          "subtitle": "Tyrna + East Khasi Hills villages",
+          "entity_type": "cooperative",
+          "typical_process_note": "Natural & washed"
+        },
+        {
+          "slug": "zizira",
+          "name": "Zizira",
+          "subtitle": "Nongpoh, Ri-Bhoi smallholders",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        }
+      ]
+    },
+    {
+      "name": "Northeast — Assam",
+      "continent_group": "India",
+      "country": "India",
+      "note": null,
+      "sort_order": 16,
+      "estates": [
+        {
+          "slug": "subko-seven-sisters",
+          "name": "Subko Project Seven Sisters",
+          "subtitle": "Dima Hasao · Caturra/Bourbon/Typica · traditional naturals",
+          "entity_type": "cooperative",
+          "typical_process_note": "Traditional naturals"
+        },
+        {
+          "slug": "c7-dima-hasao",
+          "name": "Corridor Seven Dima Hasao Naturals",
+          "subtitle": "900-1400m · Chandragiri/SLN 9",
+          "entity_type": "single_estate",
+          "typical_process_note": "Natural"
+        },
+        {
+          "slug": "saltoro-raga",
+          "name": "Saltoro 'Raga'",
+          "subtitle": "Dima Hasao · light roast Arabica",
+          "entity_type": "single_estate",
+          "typical_process_note": "Washed (light-roast Arabica)"
+        },
+        {
+          "slug": "brahmaputra",
+          "name": "Brahmaputra Coffee",
+          "subtitle": "Karbi Anglong & Dima Hasao single origins",
+          "entity_type": "single_estate",
+          "typical_process_note": null
+        }
+      ]
+    },
+    {
+      "name": "Outside India — Africa & Arabia",
+      "continent_group": "Africa & Arabia",
+      "country": "Various",
+      "note": "Track by region → washing station (Ethiopia/Kenya). Washed = floral/citrus clarity; natural = berry jam.",
+      "sort_order": 17,
+      "estates": [
+        {
+          "slug": "eth-yirgacheffe",
+          "name": "Ethiopia · Yirgacheffe",
+          "subtitle": "Gedeo · washed floral benchmark · Kochere, Wenago, Idido sub-lots",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (classic); naturals common"
+        },
+        {
+          "slug": "eth-sidama",
+          "name": "Ethiopia · Sidama/Sidamo",
+          "subtitle": "20+ woredas · Bensa, Bombe, Chire",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "eth-guji",
+          "name": "Ethiopia · Guji",
+          "subtitle": "Oromia · Hambela, Shakiso, Uraga · fruit-forward naturals",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural & washed"
+        },
+        {
+          "slug": "eth-harrar",
+          "name": "Ethiopia · Harrar",
+          "subtitle": "Eastern highlands · natural-only, wild blueberry/wine",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural (dry) — only"
+        },
+        {
+          "slug": "eth-limu",
+          "name": "Ethiopia · Limu",
+          "subtitle": "Southwest · balanced washed",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "eth-jimma",
+          "name": "Ethiopia · Jimma/Kaffa",
+          "subtitle": "Naturals, tropical fruit",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural (mostly)"
+        },
+        {
+          "slug": "eth-nekemte",
+          "name": "Ethiopia · Nekemte/Lekempti",
+          "subtitle": "Wellega, west · fruity body",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural & washed"
+        },
+        {
+          "slug": "kenya-nyeri",
+          "name": "Kenya · Nyeri",
+          "subtitle": "SL28/SL34 · blackcurrant · factories: Gaturiri, Tegu",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (double-fermented/soaked)"
+        },
+        {
+          "slug": "kenya-kirinyaga",
+          "name": "Kenya · Kirinyaga",
+          "subtitle": "Washed · Kiangoi, Kainamui factories",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (double-fermented/soaked)"
+        },
+        {
+          "slug": "kenya-other",
+          "name": "Kenya · Embu / Meru / Kiambu / Murang'a",
+          "subtitle": "Washed, AA/AB/PB grades",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "rwanda",
+          "name": "Rwanda",
+          "subtitle": "Washed Bourbon · Nyamasheke, Huye · stations: Humure, Cyato",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed Bourbon; some natural"
+        },
+        {
+          "slug": "burundi",
+          "name": "Burundi",
+          "subtitle": "Kayanza, Ngozi · stations: Kibingo, Gaharo, Heza",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed; some natural"
+        },
+        {
+          "slug": "tanzania",
+          "name": "Tanzania",
+          "subtitle": "Kilimanjaro (N), Mbeya (S) · Peaberry",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed; peaberry sorted"
+        },
+        {
+          "slug": "uganda",
+          "name": "Uganda",
+          "subtitle": "Mt Elgon/Bugisu, Rwenzori, Sipi Falls",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed arabica; natural robusta"
+        },
+        {
+          "slug": "drc",
+          "name": "DR Congo",
+          "subtitle": "Kivu · Lake Kivu lots",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "malawi",
+          "name": "Malawi",
+          "subtitle": "Chitipa, Misuku Hills, Viphya",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "yemen",
+          "name": "Yemen",
+          "subtitle": "Haraz, Bani Matar, Mokha · ancient natural, wine-like",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural (dry) — traditional"
+        }
+      ]
+    },
+    {
+      "name": "Outside India — Asia-Pacific",
+      "continent_group": "Asia-Pacific",
+      "country": "Various",
+      "note": "Processing dominates flavor here — wet-hulling gives Indonesia its earthy body.",
+      "sort_order": 18,
+      "estates": [
+        {
+          "slug": "sumatra",
+          "name": "Indonesia · Sumatra",
+          "subtitle": "Mandheling, Gayo (Aceh), Lintong · wet-hulled, earthy",
+          "entity_type": "region_origin",
+          "typical_process_note": "Wet-hulled (Giling Basah)"
+        },
+        {
+          "slug": "sulawesi",
+          "name": "Indonesia · Sulawesi",
+          "subtitle": "Toraja / Kalossi (Celebes) · full body",
+          "entity_type": "region_origin",
+          "typical_process_note": "Wet-hulled; some washed"
+        },
+        {
+          "slug": "java",
+          "name": "Indonesia · Java",
+          "subtitle": "Ijen Plateau estates (Jampit, Blawan)",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (estate coffees)"
+        },
+        {
+          "slug": "bali",
+          "name": "Indonesia · Bali",
+          "subtitle": "Kintamani · volcanic, citrus",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "flores",
+          "name": "Indonesia · Flores",
+          "subtitle": "Bajawa",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "papua-id",
+          "name": "Indonesia · Papua",
+          "subtitle": "Wamena / Baliem Valley",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "vietnam",
+          "name": "Vietnam",
+          "subtitle": "Da Lat, Cau Dat, Son La · robusta + emerging arabica",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural; robusta natural"
+        },
+        {
+          "slug": "png",
+          "name": "Papua New Guinea",
+          "subtitle": "Waghi Valley, Eastern Highlands · Sigri Estate (A/AA)",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "timor",
+          "name": "Timor-Leste",
+          "subtitle": "Ermera, Maubisse",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "china-yunnan",
+          "name": "China · Yunnan",
+          "subtitle": "Pu'er, Baoshan · emerging specialty",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed; increasingly honey/natural"
+        },
+        {
+          "slug": "thailand",
+          "name": "Thailand",
+          "subtitle": "Doi Chang, Doi Tung, Chiang Rai",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed, natural, honey"
+        },
+        {
+          "slug": "laos",
+          "name": "Laos",
+          "subtitle": "Bolaven Plateau",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "myanmar",
+          "name": "Myanmar",
+          "subtitle": "Ywangan, Shan State, Pyin Oo Lwin",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "philippines",
+          "name": "Philippines",
+          "subtitle": "Benguet/Cordillera, Sagada, Batangas (Barako)",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural; Barako natural"
+        }
+      ]
+    },
+    {
+      "name": "Outside India — Americas",
+      "continent_group": "Americas",
+      "country": "Various",
+      "note": "Track by department/region; drop to estate level for Panama.",
+      "sort_order": 19,
+      "estates": [
+        {
+          "slug": "colombia-huila",
+          "name": "Colombia · Huila",
+          "subtitle": "Washed sweetness · flagship department",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (classic); naturals/honeys rising"
+        },
+        {
+          "slug": "colombia-narino",
+          "name": "Colombia · Nariño",
+          "subtitle": "High-altitude, bright",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "colombia-cauca",
+          "name": "Colombia · Cauca / Tolima",
+          "subtitle": "Washed, balanced",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "colombia-eje",
+          "name": "Colombia · Eje Cafetero (Quindío/Caldas/Risaralda)",
+          "subtitle": "Coffee Axis",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "colombia-sierra",
+          "name": "Colombia · Sierra Nevada / Santander",
+          "subtitle": "Distinct terroirs",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "brazil-minas",
+          "name": "Brazil · Sul de Minas",
+          "subtitle": "Chocolate, nut · pulped natural",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural & pulped natural"
+        },
+        {
+          "slug": "brazil-cerrado",
+          "name": "Brazil · Cerrado Mineiro",
+          "subtitle": "DO region, consistent",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural & pulped natural"
+        },
+        {
+          "slug": "brazil-mogiana",
+          "name": "Brazil · Mogiana",
+          "subtitle": "São Paulo/Minas border",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural & pulped natural"
+        },
+        {
+          "slug": "brazil-bahia",
+          "name": "Brazil · Chapada Diamantina (Bahia)",
+          "subtitle": "High-altitude",
+          "entity_type": "region_origin",
+          "typical_process_note": "Natural, pulped natural, washed"
+        },
+        {
+          "slug": "guatemala-antigua",
+          "name": "Guatemala · Antigua",
+          "subtitle": "Volcanic, structured",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (classic)"
+        },
+        {
+          "slug": "guatemala-huehue",
+          "name": "Guatemala · Huehuetenango",
+          "subtitle": "Highest, bright",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "guatemala-atitlan",
+          "name": "Guatemala · Atitlán / Cobán / San Marcos",
+          "subtitle": "8 DO regions",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "costarica-tarrazu",
+          "name": "Costa Rica · Tarrazú",
+          "subtitle": "Bright, honey-process pioneer",
+          "entity_type": "region_origin",
+          "typical_process_note": "Honey/micro-mill pioneer; washed"
+        },
+        {
+          "slug": "costarica-valleys",
+          "name": "Costa Rica · West/Central Valley, Tres Ríos",
+          "subtitle": "Micro-mills",
+          "entity_type": "region_origin",
+          "typical_process_note": "Honey, washed, natural"
+        },
+        {
+          "slug": "marcala-honduras",
+          "name": "Marcala, Honduras",
+          "subtitle": "La Paz · SHG, washed · [your first non-India origin]",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (SHG)"
+        },
+        {
+          "slug": "honduras-other",
+          "name": "Honduras · Copán / Ocotepeque / Montecillos",
+          "subtitle": "Other key regions",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed; naturals rising"
+        },
+        {
+          "slug": "panama-boquete",
+          "name": "Panama · Boquete",
+          "subtitle": "Gesha's home · estate: Hacienda La Esmeralda",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural (Gesha both)"
+        },
+        {
+          "slug": "panama-volcan",
+          "name": "Panama · Volcán / Chiriquí",
+          "subtitle": "Candela · high-altitude Gesha",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "elsalvador",
+          "name": "El Salvador",
+          "subtitle": "Apaneca-Ilamatepec, Santa Ana · Bourbon/Pacamara",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed; natural & honey (Pacamara/Bourbon)"
+        },
+        {
+          "slug": "nicaragua",
+          "name": "Nicaragua",
+          "subtitle": "Jinotega, Matagalpa, Nueva Segovia, Dipilto",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed, natural, honey"
+        },
+        {
+          "slug": "mexico",
+          "name": "Mexico",
+          "subtitle": "Chiapas, Oaxaca (Pluma Hidalgo), Veracruz",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed (classic)"
+        },
+        {
+          "slug": "peru",
+          "name": "Peru",
+          "subtitle": "Cajamarca, Cusco, Amazonas, Chanchamayo",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "bolivia",
+          "name": "Bolivia",
+          "subtitle": "Caranavi, Yungas",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "ecuador",
+          "name": "Ecuador",
+          "subtitle": "Loja, Pichincha, Galápagos",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        },
+        {
+          "slug": "jamaica",
+          "name": "Jamaica · Blue Mountain",
+          "subtitle": "Mild, prized",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed"
+        },
+        {
+          "slug": "hawaii",
+          "name": "USA · Hawaii (Kona/Ka'u/Maui)",
+          "subtitle": "Smooth, low-acid",
+          "entity_type": "region_origin",
+          "typical_process_note": "Washed & natural"
+        }
+      ]
+    }
+  ],
+  "brewer_rules": [
+    {
+      "bucket_key": "washed-light",
+      "label": "Washed · light, floral/bright",
+      "brewer": "V60 (cone)",
+      "params": "medium-fine · 93–94°C · 1:16",
+      "why": "Clarity is the point — a fast cone lifts the florals and citrus. A French press would mute exactly what makes it special."
+    },
+    {
+      "bucket_key": "natural",
+      "label": "Natural · fruit-forward",
+      "brewer": "Kalita Wave (flat-bottom)",
+      "params": "medium · 92–94°C · 1:16",
+      "why": "The even, slower bed builds sweetness and body to carry the fruit; a fast V60 runs thin and channels on dense naturals."
+    },
+    {
+      "bucket_key": "honey",
+      "label": "Honey · syrupy, sweet",
+      "brewer": "Clever Dripper or Kalita",
+      "params": "medium · 91–93°C · 1:15",
+      "why": "Immersion-then-drain squeezes out the syrupy honey sweetness and round mouthfeel without leaving silt in the cup."
+    },
+    {
+      "bucket_key": "anaerobic",
+      "label": "Anaerobic / experimental ferment",
+      "brewer": "AeroPress (cooler water)",
+      "params": "medium · 88–90°C · 1:15",
+      "why": "High-intensity, boozy lots need taming, not amplifying. AeroPress gives control over contact time and temperature."
+    },
+    {
+      "bucket_key": "dark",
+      "label": "Dark roast · chocolatey, for milk",
+      "brewer": "Moka pot, AeroPress or S. Indian filter",
+      "params": "fine–medium · 90–92°C · 1:15",
+      "why": "Pressure/percolation suits roast depth and body, and stands up to milk. A fast V60 goes flat and ashy on dark roasts."
+    },
+    {
+      "bucket_key": "body",
+      "label": "Dense natural / robusta · body-forward",
+      "brewer": "French Press or moka",
+      "params": "coarse · 92–95°C · 1:15",
+      "why": "Body is the goal here — embrace the oils and texture instead of filtering them out. A cone would strip the best part."
+    }
+  ],
+  "processes": [
+    {
+      "key": "washed",
+      "label": "Washed"
+    },
+    {
+      "key": "natural",
+      "label": "Natural (dry)"
+    },
+    {
+      "key": "honey",
+      "label": "Honey / pulped sun-dried"
+    },
+    {
+      "key": "anaerobic",
+      "label": "Anaerobic / experimental"
+    },
+    {
+      "key": "wet-hulled",
+      "label": "Wet-hulled (Giling Basah)"
+    },
+    {
+      "key": "experimental",
+      "label": "Experimental ferment"
+    }
+  ],
+  "confirmed_tried": [
+    {
+      "slug": "baarbara",
+      "roaster": "Tulum Coffee",
+      "process_bucket": "honey"
+    },
+    {
+      "slug": "lungdai-mizoram",
+      "roaster": "Grey Soul",
+      "process_bucket": "natural"
+    },
+    {
+      "slug": "raxidi-lobo",
+      "roaster": "Siolim",
+      "process_bucket": "anaerobic"
+    },
+    {
+      "slug": "ratnagiri",
+      "roaster": "Siolim",
+      "process_bucket": "anaerobic"
+    },
+    {
+      "slug": "baankubedda",
+      "roaster": "Araku Coffee",
+      "process_bucket": "natural"
+    },
+    {
+      "slug": "marcala-honduras",
+      "roaster": null,
+      "process_bucket": "washed-light"
+    },
+    {
+      "slug": "attikan",
+      "roaster": "Blue Tokai",
+      "process_bucket": "dark"
+    },
+    {
+      "slug": "basankhan",
+      "roaster": "Blue Tokai",
+      "process_bucket": "dark"
+    },
+    {
+      "slug": "st-joseph",
+      "roaster": "Blue Tokai",
+      "process_bucket": "natural"
+    }
+  ]
+}
