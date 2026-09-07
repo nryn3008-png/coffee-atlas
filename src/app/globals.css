@@ -1,16 +1,278 @@
+/* Design system ported verbatim from legacy/estate-tracker.html — that file is
+   the UX spec (see handoff.md). Fonts are loaded via next/font in layout.tsx,
+   which exposes the --font-* variables used below. */
+
 :root {
+  --pine: #1f3226;
   --pine-deep: #142019;
   --parchment: #e9e2cd;
+  --parchment-light: #f2ecdc;
+  --umber: #8a4426;
+  --umber-deep: #6b3319;
+  --olive: #6f7b4e;
   --ink: #2b2620;
   --ink-soft: #5c5648;
-  --umber: #8a4426;
-  --olive: #6f7b4e;
   --line: rgba(43, 38, 32, 0.15);
+  --line-soft: rgba(43, 38, 32, 0.08);
 }
+
 * { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
 body {
-  margin: 0;
   background: var(--parchment);
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(111, 123, 78, 0.10), transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(138, 68, 38, 0.08), transparent 45%);
+  background-attachment: fixed;
+  font-family: var(--font-sans), 'IBM Plex Sans', system-ui, sans-serif;
   color: var(--ink);
-  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
 }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* ---------- header ---------- */
+header { margin-bottom: 32px; }
+
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 1.05;
+  margin: 0 0 10px;
+  color: var(--pine-deep);
+}
+
+.sub { font-size: 15px; color: var(--ink-soft); max-width: 480px; line-height: 1.5; margin: 0; }
+
+/* ---------- progress ---------- */
+.progress-card {
+  margin-top: 26px;
+  background: var(--parchment-light);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.progress-number {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--umber-deep);
+  white-space: nowrap;
+}
+.progress-number span {
+  font-size: 16px;
+  color: var(--ink-soft);
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 400;
+}
+.bar-track { flex: 1; height: 6px; background: rgba(43, 38, 32, 0.12); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--olive); border-radius: 4px; transition: width 0.4s ease; }
+
+/* ---------- filters ---------- */
+.filter-row { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+.filter-btn {
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.filter-btn:hover { border-color: var(--olive); }
+.filter-btn.active { background: var(--pine); color: var(--parchment-light); border-color: var(--pine); }
+
+/* ---------- region ---------- */
+.region { margin-top: 34px; }
+.region-head {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  padding: 0 0 8px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+.region-head:hover .region-name { color: var(--umber-deep); }
+.region-name {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--pine-deep);
+  transition: color 0.15s ease;
+}
+.region-meta { font-family: var(--font-mono), monospace; font-size: 12px; color: var(--ink-soft); }
+.region-note { font-size: 12.5px; color: var(--ink-soft); margin: 6px 0 0; font-style: italic; }
+.region-body { overflow: hidden; max-height: 6000px; transition: max-height 0.3s ease; }
+.region-body.collapsed { max-height: 0; }
+
+/* ---------- estate row ---------- */
+.estate-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.estate-row:last-child { border-bottom: none; }
+
+.check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border-radius: 3px;
+  border: 1.5px solid var(--ink-soft);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.check.tried { background: var(--umber); border-color: var(--umber); }
+.check svg { width: 12px; height: 12px; display: none; }
+.check.tried svg { display: block; }
+
+.estate-main { flex: 1; min-width: 0; }
+.estate-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+.estate-top > span { display: block; min-width: 0; }
+/* these are <span>s (a <button> may not contain <div>s) — restore block flow */
+.estate-name, .estate-sub, .estate-process, .roaster-tag { display: block; }
+.estate-name { font-size: 15px; font-weight: 500; color: var(--ink); }
+.estate-row.tried .estate-name { color: var(--umber-deep); }
+.estate-sub { font-size: 12.5px; color: var(--ink-soft); margin-top: 1px; }
+.estate-process {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  color: var(--umber);
+  margin-top: 3px;
+  letter-spacing: 0.01em;
+}
+.estate-process b { color: var(--ink-soft); font-weight: 500; }
+.expand-arrow { font-family: var(--font-mono), monospace; font-size: 12px; color: var(--ink-soft); flex-shrink: 0; }
+
+/* ---------- expand panel ---------- */
+.estate-notes { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+.estate-notes.open { max-height: 420px; margin-top: 10px; }
+
+.process-select {
+  width: 100%;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  color: var(--ink);
+  background: var(--parchment-light);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.process-select:focus { outline: none; border-color: var(--olive); }
+
+.brewer-rec {
+  background: rgba(111, 123, 78, 0.10);
+  border-left: 2px solid var(--olive);
+  border-radius: 0 3px 3px 0;
+  padding: 8px 11px;
+  margin-bottom: 9px;
+}
+.rec-brewer { font-family: var(--font-serif), Georgia, serif; font-size: 14px; font-weight: 600; color: var(--pine-deep); }
+.rec-params { font-family: var(--font-mono), monospace; font-size: 11px; color: var(--umber-deep); margin: 2px 0 4px; }
+.rec-why { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
+
+.estate-notes textarea {
+  width: 100%;
+  min-height: 56px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--parchment-light);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+.estate-notes textarea:focus { outline: none; border-color: var(--olive); }
+
+.roaster-input {
+  width: 100%;
+  font-family: var(--font-mono), monospace;
+  font-size: 12.5px;
+  color: var(--umber-deep);
+  background: var(--parchment-light);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+}
+.roaster-input:focus { outline: none; border-color: var(--olive); }
+.roaster-tag { font-family: var(--font-mono), monospace; font-size: 11px; color: var(--olive); margin-top: 2px; }
+.roaster-tag span { margin-right: 6px; }
+
+/* ---------- misc ---------- */
+.empty-state {
+  background: var(--parchment-light);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px;
+  margin-top: 26px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.empty-state code {
+  font-family: var(--font-mono), monospace;
+  font-size: 12.5px;
+  background: rgba(43, 38, 32, 0.06);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+footer {
+  margin-top: 46px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  font-family: var(--font-mono), monospace;
+}
+.save-state { color: var(--olive); }
+
+:focus-visible { outline: 2px solid var(--olive); outline-offset: 2px; }

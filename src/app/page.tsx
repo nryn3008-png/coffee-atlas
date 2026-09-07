@@ -1,54 +1,67 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import AtlasView, { type AtlasRegion } from "@/components/AtlasView";
+import { fallbackBrewerRules } from "@/lib/brewer-rules";
+import { seedRegions } from "@/lib/seed-atlas";
+import type { BrewerRule } from "@/types/db";
 
-// Minimal read-only starting point: lists estates grouped by region,
-// straight from Supabase, to prove the wiring end-to-end.
-// TODO (Claude Code): auth, personal tastings, brewer-recommendation UI,
-// roaster/lot graph, filters, search — see handoff.md.
+// Reference data (regions, estates, brewer rules) is shared and world-readable
+// per the RLS policies, so it is fetched server-side with the anon key.
+// Personal tastings are still client-side localStorage — see src/lib/tastings.ts
+// and handoff.md step 4 for the swap to the `tastings` table once auth lands.
+async function getAtlas(): Promise<{ regions: AtlasRegion[]; rules: BrewerRule[]; live: boolean }> {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!url || !anonKey) return { regions: seedRegions, rules: fallbackBrewerRules, live: false };
 
-async function getData() {
   const cookieStore = cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
-  );
-  const { data: regions } = await supabase
-    .from("regions")
-    .select("id,name,continent_group,sort_order,estates(name,subtitle,typical_process_note,entity_type)")
-    .order("sort_order");
-  return regions ?? [];
+  const supabase = createServerClient(url, anonKey, {
+    cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} },
+  });
+
+  const [regionsRes, rulesRes] = await Promise.all([
+    supabase
+      .from("regions")
+      .select("id,name,note,sort_order,estates(slug,name,subtitle,typical_process_note)")
+      .order("sort_order"),
+    supabase.from("brewer_rules").select("*"),
+  ]);
+
+  const live = !!regionsRes.data?.length;
+  return {
+    regions: live ? (regionsRes.data as unknown as AtlasRegion[]) : seedRegions,
+    rules: rulesRes.data?.length ? (rulesRes.data as BrewerRule[]) : fallbackBrewerRules,
+    live,
+  };
 }
 
 export default async function Home() {
-  const regions = await getData();
+  const { regions, rules, live } = await getAtlas();
+  const total = regions.reduce((sum, r) => sum + (r.estates?.length ?? 0), 0);
+
   return (
-    <main style={{ maxWidth: 760, margin: "0 auto", padding: "40px 20px 80px" }}>
-      <h1 style={{ fontSize: 34, color: "var(--pine-deep)", marginBottom: 4 }}>Coffee Atlas</h1>
-      <p style={{ color: "var(--ink-soft)", marginTop: 0 }}>
-        Estate-first specialty coffee — {regions.reduce((s: number, r: any) => s + (r.estates?.length ?? 0), 0)} origins.
-      </p>
-      {regions.length === 0 && (
-        <p style={{ color: "var(--umber)" }}>
-          No data yet — apply the migration and run <code>npm run seed</code>. See handoff.md.
+    <main className="wrap">
+      <header>
+        <div className="eyebrow">Field log · Western Ghats &amp; beyond</div>
+        <h1>Coffee Atlas</h1>
+        <p className="sub">
+          An estate-first census of specialty coffee — {total} origins across India
+          and beyond. Tap any estate to set its process and get a brewer recommendation, log
+          the roaster, and jot tasting notes.
         </p>
-      )}
-      {regions.map((r: any) => (
-        <section key={r.id} style={{ marginTop: 28 }}>
-          <h2 style={{ fontSize: 18, borderBottom: "1px solid var(--line)", paddingBottom: 6 }}>{r.name}</h2>
-          {r.estates?.map((e: any, i: number) => (
-            <div key={i} style={{ padding: "10px 0", borderBottom: "1px solid rgba(43,38,32,0.08)" }}>
-              <div style={{ fontWeight: 600 }}>{e.name}</div>
-              {e.subtitle && <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>{e.subtitle}</div>}
-              {e.typical_process_note && (
-                <div style={{ fontSize: 12, color: "var(--umber)", fontFamily: "monospace", marginTop: 2 }}>
-                  process · {e.typical_process_note}
-                </div>
-              )}
-            </div>
-          ))}
-        </section>
-      ))}
+
+        {!live && (
+          <div className="empty-state">
+            <strong>Preview — not connected to Supabase.</strong> These {total} origins are
+            being read from the bundled <code>supabase/seed/data.json</code>, and anything you
+            check off is saved only in this browser. To go live: apply{" "}
+            <code>supabase/migrations/0001_init.sql</code>, fill in <code>.env.local</code>,
+            then run <code>npm run seed</code>. See <code>handoff.md</code>.
+          </div>
+        )}
+      </header>
+
+      <AtlasView regions={regions} brewerRules={rules} />
     </main>
   );
 }
