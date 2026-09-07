@@ -45,7 +45,10 @@ each based on its processing method and roast.
 
 1. Push this repo to GitHub.
 2. Import it in Vercel.
-3. Add the three env vars from `.env.example` in the Vercel project settings.
+3. Add the two `NEXT_PUBLIC_` env vars (`NEXT_PUBLIC_SUPABASE_URL`,
+   `NEXT_PUBLIC_SUPABASE_ANON_KEY`) in the Vercel project settings.
+   **Do not add `SUPABASE_SERVICE_ROLE_KEY`** — it bypasses RLS and is only
+   used by the local seed script, never by the deployed app.
 4. Deploy — Vercel auto-builds on every push to `main`.
 
 ## What's in here
